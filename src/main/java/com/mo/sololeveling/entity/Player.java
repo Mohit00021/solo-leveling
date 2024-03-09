@@ -19,6 +19,8 @@ public class Player {
     private Long id;
 
     private String userName;
+    @Column(unique = true)
+    private String email;
     private String title;
     private long xp;
     private LocalDate startDate;
