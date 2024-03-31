@@ -1,6 +1,6 @@
 package com.mo.sololeveling.controller;
 
-import com.mo.sololeveling.Gemini.GeminiService;
+import com.mo.sololeveling.service.GeminiService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -16,6 +16,8 @@ public class GeminiTestController {
 
     @GetMapping("/askGemini")
     public ResponseEntity<String> askGeminiAi(@RequestParam String promptForGemini){
-        return ResponseEntity.ok().body(geminiService.getCompletion(promptForGemini));
+        String geminiRes = geminiService.getCompletion(promptForGemini);
+
+        return ResponseEntity.ok().body(geminiRes);
     }
 }

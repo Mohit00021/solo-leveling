@@ -1,0 +1,37 @@
+In a JSON format, provide a small basic test of a skill containing 1 question. Each question should have these properties:
+
+
+ question: The actual question text.
+
+ options (optional): A list of answer choices (applicable to multiple-choice questions). Leave empty if not applicable.
+
+ correctAnswer: The correct answer to the question.
+
+ weightage: The point value assigned to the question (total weightage is 20).
+
+ level: The difficulty level of the question (S - Highest, A - Second Highest, M - Medium, E - Easiest).
+
+
+Here's an example of the desired JSON format:
+
+[
+
+  {
+
+    "question": "bla bla bla?",
+
+    "options": [A, B, C, D]
+
+    "correctAnswer": "",
+
+    "weightage": 2,
+
+    "level": "E"
+
+  },
+
+ more questions
+
+]
+
+generate the JSON for test focusing on

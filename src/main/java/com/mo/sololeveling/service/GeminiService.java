@@ -1,5 +1,6 @@
-package com.mo.sololeveling.Gemini;
+package com.mo.sololeveling.service;
 
+import com.mo.sololeveling.Gemini.GeminiInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,7 @@ public class GeminiService {
         this.geminiInterface = geminiInterface;
     }
 
-    public JsonStructure.ModelList getModels() {
+    public ModelList getModels() {
         return geminiInterface.getModels();
     }
 
