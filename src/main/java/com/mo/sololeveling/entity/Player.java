@@ -1,9 +1,11 @@
 package com.mo.sololeveling.entity;
 
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -11,6 +13,11 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "player",
+uniqueConstraints = {
+        @UniqueConstraint(columnNames = "user_name"),
+        @UniqueConstraint(columnNames = "email")
+})
 public class Player {
 
     @Id
@@ -19,8 +26,20 @@ public class Player {
     private Long id;
 
     private String userName;
-    @Column(unique = true)
+
+
+    @Nonnull
     private String email;
+
+    @Nonnull
+    private String password;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_role",
+    joinColumns = @JoinColumn(name = "player_id"),
+    inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> userRole = new HashSet<>();
+
     private String title;
     private long xp;
     private LocalDate startDate;
@@ -33,5 +52,5 @@ public class Player {
             joinColumns = @JoinColumn(name = "player_id"),
             inverseJoinColumns = @JoinColumn(name = "guild_id")
     )
-    Set<Guild> guilds;
+    private Set<Guild> guilds;
 }
